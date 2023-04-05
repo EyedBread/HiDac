@@ -2,10 +2,10 @@
 #define _CONSTANTS_H_
 
 #include <math.h> 
-#include <jsoncpp/value.h>
+#include <jsoncpp/json/json.h>
 #include <iostream>
 
-#define MY_EPSILON 0.0005
+#define MY_EPSILON 0.05
 
 typedef float v2f[2];
 
@@ -34,6 +34,7 @@ void v2fSub( v2f v1, v2f v2, v2f res );
 
 void v2fAdd( v2f v1, v2f v2, v2f res );
 void v2fAdd( v2f v1, v2f v2, float t, v2f res);
+void v2fAdd(v2f v1, float t, v2f res);
 
 void v2fPrint( v2f p);
 void v2fPrint( const char * label, v2f p);

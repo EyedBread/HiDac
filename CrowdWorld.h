@@ -1,14 +1,15 @@
 #include "CrowdObject.h"
 #include "Agent.h"
 #include "Wall.h"
-#include "Render.h"
 #include <vector>
-#include <jsoncpp/value.h>
+#include <jsoncpp/json/json.h>
+#include "gnuplot-iostream.h" // include gnuplot header
 
 class CrowdWorld {
  private:
   std::vector<Agent * > agentList;
   std::vector<CrowdObject * > objectList;
+  Gnuplot gp; // create a gnuplot object 
   
   void createNewObject(Json::Value v);
   

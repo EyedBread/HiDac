@@ -69,6 +69,11 @@ void v2fAdd( v2f v1, v2f v2, float t, v2f res){
 
 }
 
+void v2fAdd(v2f v1, float t, v2f res) {
+  res[0] = v1[0] + t;
+  res[1]= v1[1] + t;
+}
+
 void v2fMult( v2f v, float f, v2f res ){
   res[0] = f * v[0];
   res[1] = f * v[1];

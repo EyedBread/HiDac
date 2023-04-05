@@ -6,14 +6,22 @@
 #include <math.h>
 #include <cmath>
 #include <vector>
-#include <jsoncpp/value.h>
+#include <jsoncpp/json/json.h>
 #include <iostream>
 #include <cstdlib>
 #include "constants.h"
 #include "Wall.h"
+#include "gnuplot-iostream.h"
+
+#define MAXIMPATIENCE 100
 
 class Agent : public CrowdObject { 
  private:
+
+  //radius of the agents influence semicircle for density calculation, set to 5.0 for now
+  float R = 5.0;
+
+
   //weights - avoidance weights
   float attractorWeight;
   float wallWeight;
@@ -30,6 +38,16 @@ class Agent : public CrowdObject {
   //the "size" of the agent
   float radius; 
 
+  //Reduce the righthand preference based on perceived density
+  float rightHandAngleMultiplier = 1.0;
+
+
+  //Updated in RepulsionOtherAgents
+  // float densityAhead;
+
+
+  int num_agents_ahead;
+
   //states whether an agent is colliding with another
   bool isColliding;
   std::vector<CrowdObject *> collideObjects;
@@ -41,7 +59,11 @@ class Agent : public CrowdObject {
   //whether agent is stopping or waiting. 
   bool stopping; 
   int stoptime;
-  bool waiting; 
+  bool waiting = false; 
+  int waitTime = 0;
+
+  //Radius of area of influence for waiting behaviours
+  float waitingRadius = 0.5;
 
   //whether agent is panicked - idea: make quantitative
   bool panic;
@@ -65,7 +87,7 @@ class Agent : public CrowdObject {
   void calculateRepelForce();
 
   //vision range - to calculate a vision rectangle, look out vislong units along velocity vector, then look by viswide / 2 units. 
-  float vislong;
+  float vislong = 3;
   float viswide;
 
   std::string mesh;
@@ -105,14 +127,15 @@ class Agent : public CrowdObject {
   float getDistance( v2f pos );
   void getDirection( v2f pos, v2f res);
  
-  void calcAgentForce( CrowdObject::CrowdObject * a , v2f ret);
+ //Follows equation 6,7,8,9
+  void calcAgentForce( CrowdObject * a , v2f ret);
   void calculateForces( );
 
   void applyForces( float deltaT );
 
   //functions to update visibility and collision vectors
-  void checkCollide( CrowdObject::CrowdObject * c );
-  void checkVisible( CrowdObject::CrowdObject * c );
+  void checkCollide( CrowdObject * c );
+  void checkVisible( CrowdObject * c );
 
   //function to 'reset' at the end of a simulation step 
   void reset();

@@ -1,7 +1,6 @@
-
 #include "CrowdObject.h"
 #include "constants.h"
-#include <jsoncpp/value.h>
+#include <jsoncpp/json/json.h>
 
 #ifndef _WALL_H_
 #define _WALL_H_
@@ -50,6 +49,6 @@ class Wall : public CrowdObject {
   float getRadiu() {return 0.0;}
 };
 
-Wall::Wall * twoWalls( Json::Value w);
+Wall * twoWalls( Json::Value w);
 
 #endif

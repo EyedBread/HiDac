@@ -5,7 +5,7 @@
   {"attractor" : {
   	       	 "type" : "attractor", 
 		 "norm" : [0.0, 0.0],
-		 "pos" :  [5.0, 5.0]
+		 "pos" :  [20.0, 0]
 		 },
    "atWeight" : 0.5,
    "agWeight" : 1.0,
@@ -13,35 +13,42 @@
    "obWeight" : 0.5, 
    "faWieght" : 0.0, 
    "accel"    : 0.2,
-   "maxVel"   : 0.5,
-   "visDist"  : 6.0, 
+   "maxVel"   : 0.1,
+   "visDist"  : 3.0, 
    "visWid"   : 2.0, 
-   "pos"      : [-20.0, -20.0],
+   "pos"      : [-20.0, 0],
    "vel"      : [0.0, 0.0],
-   "pspace"   : 0.1, 
+   "pspace"   : 0.05, 
    "mesh"     : "blue.mesh",
    "radius"   : 0.5
    },
   {"attractor" : {
   	       	 "type" : "attractor", 
 		 "norm" : [0.0, 0.0],
-		 "pos" :  [-5.0, 5.0]
+		 "pos" :  [-20.0, 0]
 		 },
    "atWeight" : 0.5,
-   "agWeight" : 1.0,
+   "agWeight" : 1.5,
    "waWeight" : 0.8,
    "obWeight" : 0.5, 
    "faWieght" : 0.0, 
    "accel"    : 0.2,
-   "maxVel"   : 0.5,
-   "visDist"  : 6.0, 
+   "maxVel"   : 0.3,
+   "visDist"  : 3.0, 
    "visWid"   : 2.0, 
-   "pos"      : [20.0, -20.0],
+   "pos"      : [20.0, 0.0],
    "vel"      : [0.0, 0.0],
-   "pspace"   : 0.1, 
+   "pspace"   : 0.05, 
    "mesh"     : "blue.mesh",
    "radius"   : 0.5
    }
+   ], 
+   "objects" : [
+   {
+   "type"  : "wall",
+   "start" : [-4.0, 1.0],
+   "end"   : [4.0, 1.0]
+   }  
    ]  
 
 }

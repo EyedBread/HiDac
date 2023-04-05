@@ -2,7 +2,7 @@
 #define _CROWD_H_
 
 #include "constants.h"
-#include <jsoncpp/value.h>
+#include <jsoncpp/json/json.h>
 
 enum objtype {AGENT, 
 	      WALL,
